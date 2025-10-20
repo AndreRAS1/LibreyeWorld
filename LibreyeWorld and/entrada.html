@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Entrar</title>
+  <link rel="stylesheet" href="entrar.css">
+</head>
+<body>
+  <div class="container">
+    <div class="icon"><div class="globe"><img class="gif" src="pulsando.gif" alt=""></div></div>
+    <h1><b>Entrar</b></h1>
+
+    <form id="loginForm" class="form" onsubmit="handleLogin(event)">
+      <input class="input-pill" type="email" placeholder="Email" id="loginEmail" required>
+      <input class="input-pill" type="password" placeholder="Senha" id="loginPassword" required>
+      <button class="btn" type="submit">Entrar</button>
+
+      <div class="row-small">Ainda não tem conta? <a href="cadastro.html">Criar conta</a></div>
+    </form>
+    <p id="loginMsg"></p>
+  </div>
+<script src="./JSentrada.js"></script>
+</body>
+</html>

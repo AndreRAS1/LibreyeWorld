@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Libreye - Tradução</title>
+  <link rel="stylesheet" href="ia.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">🌐 Libreye</div>
+      <ul class="menu">
+        <li><a href="site.html">🏠 Início</a></li>
+        <li><a href="#">Histórico</a></li>
+        <li><a href="#">Comunidade</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="translator-hero">
+    <h1 class="glow">✨ Traduza em Tempo Real</h1>
+    <p class="subtitle">Escolha o idioma de origem e o idioma de destino</p>
+  </section>
+
+  <section class="translator-panel">
+    <div class="lang-box">
+      <h3>De:</h3>
+      <select id="fromLang">
+        <option value="pt">Português</option>
+        <option value="en">Inglês</option>
+        <option value="fr">Francês</option>
+        <option value="ja">Japonês</option>
+        <option value="ko">Coreano</option>
+      </select>
+      <textarea id="inputText" placeholder="Digite ou fale aqui..."></textarea>
+    </div>
+
+    <div class="lang-box">
+      <h3>Para:</h3>
+      <select id="toLang">
+        <option value="en">Inglês</option>
+        <option value="pt">Português</option>
+        <option value="fr">Francês</option>
+        <option value="ja">Japonês</option>
+        <option value="ko">Coreano</option>
+      </select>
+      <div class="output" id="outputText">Tradução aparecerá aqui...</div>
+    </div>
+  </section>
+
+  <div class="actions">
+    <button class="btn purple" id="translateBtn">Traduzir</button>
+  </div>
+  <script>const res = await fetch("https://pt.libretranslate.com/translate", {
+    method: "POST",
+    body: JSON.stringify({
+      q: "eu te amo muito\n",
+      source: "auto",
+      target: "en",
+      format: "text",
+      alternatives: 3,
+      api_key: ""
+    }),
+    headers: { "Content-Type": "application/json" }
+  });
+  
+  console.log(await res.json());</script>
+
+  <footer>
+    <p>© 2025 Libreye - Todos os direitos reservados</p>
+  </footer>

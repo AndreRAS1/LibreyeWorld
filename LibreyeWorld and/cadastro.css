@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top left, #0a0014, #1a001f);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+  width: 350px;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(128, 0, 255, 0.6);
+  color: white;
+}
+
+.logo {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+h1 span {
+  color: #b366ff;
+  text-shadow: 0 0 10px #7a1fff;
+}
+
+form input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  text-align: center;
+  font-size: 1rem;
+}
+
+form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: linear-gradient(45deg, #7a1fff, #b366ff);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+form button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #b366ff;
+}
+
+.voltar {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.voltar a {
+  color: #7a1fff;
+  text-decoration: none;
+}
+
+.voltar a:hover {
+  text-decoration: underline;
+}
+
+.mensagem {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+img.gif{
+  width: auto;
+  height: 150px;
+}

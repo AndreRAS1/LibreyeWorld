@@ -1,0 +1,138 @@
+/* ==========================
+   RESET & BASE
+========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0d001a, #1a0033);
+  color: #fff;
+}
+
+/* ==========================
+   CONTAINER
+========================== */
+.container {
+  background: #0a0014;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 25px rgba(147, 51, 234, 0.4);
+  width: 350px;
+  text-align: center;
+  position: relative;
+}
+
+/* ==========================
+   ÍCONE TOPO
+========================== */
+.icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+/* ==========================
+   TÍTULO
+========================== */
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+h1 b {
+  color: #a855f7;
+  text-shadow: 0px 0px 10px #9333ea;
+}
+
+/* ==========================
+   FORMULÁRIO
+========================== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-pill {
+  width: 100%;
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  color: #333;
+  background: #fff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.input-pill::placeholder {
+  color: #7a7a7a;
+}
+
+/* ==========================
+   BOTÃO
+========================== */
+.btn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(90deg, #6d28d9, #9333ea);
+  box-shadow: 0px 6px 15px rgba(147, 51, 234, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 8px 20px rgba(147, 51, 234, 0.7);
+}
+
+/* ==========================
+   TEXTO AUXILIAR
+========================== */
+.row-small {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.row-small a {
+  color: #a855f7;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.row-small a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================
+   MENSAGEM DE SUCESSO
+========================== */
+.success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #22c55e;
+  gap: 6px;
+}
+ 
+img.gif{
+  width: auto;
+  height: 150px;
+}

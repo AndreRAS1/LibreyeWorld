@@ -1,0 +1,75 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top left, #311052, #300738);
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+  }
+  
+  /* Container central */
+  .container {
+    text-align: center;
+    color: white;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  /* Texto principal */
+  .titulo {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #b366ff;
+    text-shadow: 0 0 15px #9c47ff, 0 0 30px #6600cc;
+    margin-bottom: 30px;
+    animation: glow 3s infinite alternate;
+  }
+  
+  .titulo span {
+    color: #ffffff;
+    text-shadow: 0 0 20px #7a1fff, 0 0 40px #b366ff;
+  }
+  
+  /* Botão estilizado */
+  .btn {
+    display: inline-block;
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #7a1fff, #b366ff);
+    border: none;
+    border-radius: 40px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 0 15px #7a1fff, 0 0 30px #b366ff;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #b366ff, 0 0 50px #7a1fff;
+  }
+  
+  /* Animações */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes glow {
+    from { text-shadow: 0 0 10px #7a1fff, 0 0 20px #b366ff; }
+    to { text-shadow: 0 0 20px #b366ff, 0 0 40px #7a1fff; }
+  }
+  
+  .gif{
+    width: auto;
+    height: 120px;
+  }

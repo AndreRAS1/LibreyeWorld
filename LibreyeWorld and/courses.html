@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagamento - LibreyeWord</title>
+    <link rel="stylesheet" href="courses.css">
+</head>
+<body>
+
+    <header class="pay-header">
+        <h1>Finalizar assinatura LibreyeWord</h1>
+        <p>Escolha um plano e confirme os dados para concluir o pagamento.</p>
+        <a href="home.html" class="back-link">← Voltar para o site</a>
+    </header>
+
+    <main class="pay-main">
+
+        <!-- Planos -->
+        <section class="pay-plans">
+            <div class="plan-card">
+                <h2>Plano Básico</h2>
+                <p class="price">R$ 29,90 <span>/mês</span></p>
+                <ul>
+                    <li>Acesso à tradução de textos</li>
+                    <li>Histórico das traduções</li>
+                    <li>Uso pessoal</li>
+                </ul>
+                <button class="select-plan" data-plan="Básico">Selecionar</button>
+            </div>
+
+            <div class="plan-card destaque">
+                <h2>Plano Pro</h2>
+                <p class="price">R$ 59,90 <span>/mês</span></p>
+                <ul>
+                    <li>Tradução multimodal (áudio, texto e sinais)</li>
+                    <li>Mais idiomas liberados</li>
+                    <li>Suporte prioritário</li>
+                </ul>
+                <button class="select-plan" data-plan="Pro">Selecionar</button>
+            </div>
+
+            <div class="plan-card">
+                <h2>Plano Equipe</h2>
+                <p class="price">R$ 129,90 <span>/mês</span></p>
+                <ul>
+                    <li>Vários usuários</li>
+                    <li>Painel de acompanhamento</li>
+                    <li>Suporte para projetos educacionais</li>
+                </ul>
+                <button class="select-plan" data-plan="Equipe">Selecionar</button>
+            </div>
+        </section>
+
+        <!-- Formulário fake de pagamento -->
+        <section class="pay-form">
+            <h2>Dados de pagamento</h2>
+            <p class="selected-plan">Plano selecionado: <span id="nome-plano">nenhum</span></p>
+
+            <form>
+                <label>
+                    Nome completo
+                    <input type="text" placeholder="Seu nome" required>
+                </label>
+
+                <label>
+                    E-mail
+                    <input type="email" placeholder="seuemail@exemplo.com" required>
+                </label>
+
+                <label>
+                    Número do cartão
+                    <input type="text" maxlength="19" placeholder="0000 0000 0000 0000" required>
+                </label>
+
+                <div class="form-row">
+                    <label>
+                        Validade
+                        <input type="text" placeholder="MM/AA" required>
+                    </label>
+
+                    <label>
+                        CVV
+                        <input type="password" maxlength="4" placeholder="***" required>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-confirmar">Confirmar pagamento</button>
+                <p class="pay-note">* Tela demonstrativa, sem cobrança real.</p>
+            </form>
+        </section>
+
+    </main>
+
+    <script>
+        // Script simples para mostrar qual plano foi escolhido
+        const planButtons = document.querySelectorAll('.select-plan');
+        const nomePlanoSpan = document.getElementById('nome-plano');
+
+        planButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                nomePlanoSpan.textContent = btn.dataset.plan;
+            });
+        });
+    </script>
+
+</body>
+</html>

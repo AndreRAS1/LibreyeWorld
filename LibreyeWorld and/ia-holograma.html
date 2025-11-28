@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Libreye IA - Holograma</title>
+    <link rel="stylesheet" href="ia-holograma.css">
+</head>
+<body>
+
+<div class="ia-page">
+
+    <!-- TOP BAR (pode adaptar pra sua navbar se quiser) -->
+    <header class="ia-top">
+        <div class="ia-logo">Libreye<span>IA</span></div>
+        <a href="home.html" class="ia-back">← voltar para home</a>
+    </header>
+
+    <!-- FUNDO + HOLOGRAMA + CHAT -->
+    <main class="ia-main">
+
+        <!-- CENA DO HOLOGRAMA (ROBOZINHO GIGANTE) -->
+        <section class="ia-holo-scene">
+
+            <!-- glows de fundo -->
+            <div class="ia-glow ia-glow-1"></div>
+            <div class="ia-glow ia-glow-2"></div>
+
+            <!-- círculo holográfico no chão -->
+            <div class="ia-base"></div>
+
+            <!-- ROBÔ HOLOGRÁFICO -->
+            <div class="ia-bot-wrapper">
+
+                <!-- círculos holográficos girando -->
+                <div class="ia-ring ring-1"></div>
+                <div class="ia-ring ring-2"></div>
+                <div class="ia-ring ring-3"></div>
+
+                <!-- robô -->
+                <div class="ia-bot">
+                    <div class="bot-head">
+                        <div class="bot-ear ear-left"></div>
+                        <div class="bot-ear ear-right"></div>
+
+                        <div class="bot-visor">
+                            <span class="bot-eye eye-left"></span>
+                            <span class="bot-eye eye-right"></span>
+                        </div>
+                    </div>
+
+                    <div class="bot-body">
+                        <div class="bot-arm arm-left"></div>
+                        <div class="bot-arm arm-right"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- balões de chat ao fundo -->
+            <div class="ia-bubble bubble-1">“Precisa de ajuda?”</div>
+            <div class="ia-bubble bubble-2">“Traduções, cursos, IA…”</div>
+            <div class="ia-bubble bubble-3">“Fale comigo.”</div>
+
+            <p class="ia-caption">
+                Assistente holográfico LibreyeWord – pronto para conversar com você.
+            </p>
+
+        </section>
+
+        <!-- PAINEL DE CHAT (FUNCIONAL) -->
+        <section class="ia-chat-panel">
+            <header class="chat-header">
+                <div class="chat-status-dot"></div>
+                <div>
+                    <h2>Libreye IA</h2>
+                    <span>online • modo holograma</span>
+                </div>
+            </header>
+
+            <div class="chat-messages" id="chat-messages">
+                <div class="msg bot">
+                    <div class="bubble">
+                        <p>Olá, eu sou a IA do LibreyeWord 💜</p>
+                        <p>Me conta: você quer ajuda com traduções, cursos ou algo do site?</p>
+                    </div>
+                </div>
+            </div>
+
+            <form class="chat-input" id="chat-form">
+                <input
+                    type="text"
+                    id="chat-text"
+                    placeholder="Digite sua mensagem..."
+                    autocomplete="off"
+                    required
+                >
+                <button type="submit">Enviar</button>
+            </form>
+
+            <p class="chat-note">
+                Protótipo visual – as respostas são simuladas no front-end.  
+                Depois você pode ligar isso a uma IA real via backend ou API.
+            </p>
+        </section>
+
+    </main>
+</div>
+
+<!-- JS do chat -->
+<script>
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('chat-text');
+    const container = document.getElementById('chat-messages');
+
+    // respostas simples só pra ficar mais "inteligente"
+    function gerarResposta(texto) {
+        const t = texto.toLowerCase();
+
+        if (t.includes('curso') || t.includes('cursos')) {
+            return 'Vi que você mencionou cursos. Você pode abrir a aba "courses" no topo do site ou me dizer o idioma que quer, que eu te indico um curso.';
+        }
+        if (t.includes('trad') || t.includes('tradução') || t.includes('translate')) {
+            return 'Tradução é comigo mesmo 😄 No LibreyeWord você consegue traduzir texto, áudio e sinais. Em breve essa IA também vai responder contextos de tradução direto aqui.';
+        }
+        if (t.includes('libras')) {
+            return 'Sobre Libras: temos cursos focados em inclusão, interpretação e uso de tecnologias para comunicação. Dá uma olhada na área de cursos em Libras do site.';
+        }
+        if (t.includes('oi') || t.includes('olá') || t.includes('e aí')) {
+            return 'Oi! 👋 É bom te ver por aqui. Me diz o que você está planejando fazer no LibreyeWord hoje.';
+        }
+
+        return 'Gostei do que você escreveu. Quando o sistema estiver integrado com uma IA real, vou conseguir usar isso pra te responder de forma muito mais precisa 😉';
+    }
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const text = input.value.trim();
+        if (!text) return;
+
+        // mensagem do usuário
+        const userMsg = document.createElement('div');
+        userMsg.className = 'msg user';
+        userMsg.innerHTML = '<div class="bubble"><p>' + text + '</p></div>';
+        container.appendChild(userMsg);
+
+        input.value = '';
+        container.scrollTop = container.scrollHeight;
+
+        // resposta da IA
+        setTimeout(() => {
+            const botMsg = document.createElement('div');
+            botMsg.className = 'msg bot';
+            botMsg.innerHTML = `
+                <div class="bubble">
+                    <p>${gerarResposta(text)}</p>
+                </div>
+            `;
+            container.appendChild(botMsg);
+            container.scrollTop = container.scrollHeight;
+        }, 500);
+    });
+</script>
+
+</body>
+</html>

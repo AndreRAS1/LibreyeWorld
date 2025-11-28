@@ -1,0 +1,240 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #1a0033, #05010f);
+    color: #eee6ff;
+    overflow-x: hidden;
+}
+
+/* 🔥 GLOW GLOBAL */
+.glow {
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(150, 0, 255, 0.35), transparent 70%);
+    filter: blur(90px);
+    z-index: -1;
+}
+.glow.top { top: -80px; left: -40px; }
+.glow.bottom { bottom: -80px; right: -40px; }
+
+/* HEADER */
+.pay-header {
+    padding: 40px 8%;
+    text-align: left;
+}
+
+.pay-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #bb7aff, #7d3dff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.pay-header p {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #d6c4ff;
+}
+
+.back-link {
+    margin-top: 16px;
+    display: inline-block;
+    color: #c79bff;
+    font-size: 13px;
+    text-decoration: none;
+}
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* GRID PRINCIPAL */
+.pay-main {
+    padding: 20px 8% 40px;
+    display: grid;
+    grid-template-columns: 2fr 1.2fr;
+    gap: 32px;
+}
+
+/* 🟪 GLASS CARD BASE */
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(175, 135, 255, 0.3);
+    backdrop-filter: blur(20px);
+    border-radius: 18px;
+    box-shadow: 0 0 30px rgba(130, 50, 255, 0.25);
+}
+
+/* CARDS DE PLANOS */
+.pay-plans {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.plan-card {
+    padding: 20px;
+    transition: 0.25s;
+}
+.plan-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    border-color: rgba(190, 120, 255, 0.7);
+    box-shadow: 0 0 42px rgba(180, 90, 255, 0.45);
+}
+
+.plan-card h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.price {
+    font-size: 26px;
+    font-weight: 700;
+    color: #e8d4ff;
+    margin-bottom: 10px;
+}
+.price span {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+/* LISTA */
+.plan-card ul {
+    margin: 14px 0;
+    list-style: none;
+}
+.plan-card li {
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+.plan-card li::before {
+    content: "⚡ ";
+    color: #b47aff;
+}
+
+/* BOTÃO SELECIONAR */
+.select-plan {
+    margin-top: 10px;
+    padding: 8px 14px;
+    font-size: 14px;
+    border: none;
+    border-radius: 999px;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(135deg, #7d3dff, #b16cff);
+    box-shadow: 0 0 14px rgba(180, 110, 255, 0.5);
+    transition: 0.25s;
+}
+.select-plan:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(200, 120, 255, 0.8);
+}
+
+/* Destaque Pro */
+.plan-card.destaque {
+    border: 1px solid #d7b0ff;
+    box-shadow: 0 0 45px rgba(210, 150, 255, 0.55);
+}
+
+/* ---------------------- */
+/* FORMULÁRIO DE PAGAMENTO */
+/* ---------------------- */
+.pay-form {
+    padding: 22px;
+}
+
+.pay-form h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.selected-plan {
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+.selected-plan span {
+    color: #ffdf8d;
+    font-weight: bold;
+}
+
+/* FORM */
+.pay-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.pay-form label {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* INPUT HIGHLIGHT NEON */
+.pay-form input {
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(150, 100, 255, 0.35);
+    border-radius: 10px;
+    color: #f1e8ff;
+    font-size: 14px;
+    transition: 0.25s;
+}
+.pay-form input:focus {
+    outline: none;
+    border-color: #be84ff;
+    box-shadow: 0 0 12px rgba(190, 130, 255, 0.8);
+}
+
+/* Linha dupla */
+.form-row {
+    display: flex;
+    gap: 12px;
+}
+
+/* BOTÃO CONFIRMAR */
+.btn-confirmar {
+    margin-top: 8px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 999px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+
+    background: linear-gradient(90deg, #7d3dff, #ba6cff);
+    box-shadow: 0 0 24px rgba(180, 90, 255, 0.75);
+
+    transition: 0.25s;
+}
+
+/* Animação de pulso */
+.btn-confirmar:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 32px rgba(200, 120, 255, 1);
+}
+
+.pay-note {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #c8b6ff;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+    .pay-main {
+        grid-template-columns: 1fr;
+    }
+    .pay-plans {
+        grid-template-columns: 1fr;
+    }
+}

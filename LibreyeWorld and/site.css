@@ -243,3 +243,26 @@
     font-size: 13px;
     color: #666;
   }
+  /* Largura máxima e respiro nas laterais */
+.container,
+main,
+section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: 6%;
+}
+
+/* Imagens e hologramas nunca estouram a tela */
+img,
+canvas,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Botões ocupam a largura toda em telas pequenas */
+button,
+.btn,
+a.btn {
+    min-height: 40px;
+}

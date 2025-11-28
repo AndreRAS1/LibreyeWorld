@@ -1,0 +1,78 @@
+/* Reset básico para tirar margens e paddings padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #121212; /* Preto de fundo para um visual moderno */
+    color: #d1c4e9; /* Um tom de roxo claro para o texto */
+    line-height: 1.6;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 2px solid #673ab7; /* Um roxo mais escuro para detalhes */
+}
+
+h1, h2 {
+    color: #9575cd; /* Roxo mais vivo para títulos */
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #1e1e1e; /* Um cinza bem escuro para destacar o conteúdo */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra suave para dar profundidade */
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    border-left: 5px solid #7e57c2; /* Uma barra lateral roxa para destaque */
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+p, li {
+    color: #e1bee7; /* Um tom de roxo suave para o texto principal */
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li {
+    background-color: #311b92; /* Roxo escuro para os itens da lista */
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #673ab7;
+    color: #b39ddb;
+}
+
+a {
+    color: #d1c4e9;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+

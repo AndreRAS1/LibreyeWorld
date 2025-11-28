@@ -1,27 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linguagens</title>
-    <link rel="stylesheet" href="linguagens.css">
-</head>
-<button onclick="setLanguage('pt-br')">Português</button>
-<button onclick="setLanguage('en')">English</button>
-<body>
-    <header>
-        <nav class="navbar">
-          <div class="logo1"><a class="logo" href="home.html">🌐 Libreye</a></div>
-          <ul class="menu">
-            <li><a href="Linguagens.html"> language</a></li>
-            <li><a href="Atualizacoes.html"> Updates</a></li>
-            <li><a href="#">History</a></li>
-            <li><a href="#">Community</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-          <div class="perfil"> <img class="perfil" src="desconhecido.png" href="home.html" alt="imagem de usuário desconhecido"><a></a> </div>
-        </nav>
-      </header>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Linguagens</title>
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="linguagens.css">
+</head>
+<body>
+
+    <script src="linguagens.js"></script>
+
+  <!-- NAVBAR -->
+  <header class="navbar" role="banner">
+    <div class="nav-left">
+      <img class="logo-icon" src="https://cdn-icons-png.flaticon.com/512/44/44386.png" alt="logo">
+      <span class="logo-text">Libereye</span>
+    </div>
+
+    <nav class="nav-center" role="navigation" aria-label="main">
+      <a href="#" data-i18n="nav_languages">languages</a>
+      <a href="#" data-i18n="nav_updates">Updates</a>
+      <a href="#" data-i18n="nav_history">History</a>
+      <a href="#" data-i18n="nav_community">Community</a>
+      <a href="#" data-i18n="nav_contact">Contact</a>
+      <a href="#" data-i18n="nav_courses">courses</a>
+      <a href="#" data-i18n="nav_about">about the site</a>
+    </nav>
+
+    <div class="nav-right">
+      <div class="user-icon" title="user">👤</div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container" role="main">
+    <h2 class="titulo" data-i18n="select_title">Selecione um idioma</h2>
+
+    <div class="language-table" id="langTable">
+      <button data-lang="en">English</button>
+      <button data-lang="pt">Português</button>
+      <button data-lang="es">Español</button>
+      <button data-lang="fr">Français</button>
+      <button data-lang="de">Deutsch</button>
+      <button data-lang="it">Italiano</button>
+      <button data-lang="ja">日本語</button>
+      <button data-lang="ko">한국어</button>
+      <button data-lang="zh">中文</button>
+      <button data-lang="hi">हिन्दी</button>
+      <button data-lang="ru">Русский</button>
+      <button data-lang="tr">Türkçe</button>
+      <button data-lang="ar">العربية</button>
+      <button data-lang="bn">বাংলা</button>
+      <button data-lang="uk">Українська</button>
+    </div>
+  </main>
+
+  <!-- JS -->
+  <script src="linguagens.js"></script>
 </body>
 </html>

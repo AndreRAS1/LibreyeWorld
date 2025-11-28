@@ -1,51 +1,76 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #000000;
-    color: #e5e5e5;
-    text-align: center;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    background: #0a0a0a;
-    border-bottom: 1px solid #222;
-  }
-  
-  img.perfil{
-    height: auto;
-    width: 50px;
-  }
-  
-  .logo {
-    font-size: 20px;
-    font-weight: bold;
-    color: #a855f7;
-    text-decoration: none;
-    text-decoration-line: none;
-  }
-  
-  .navbar .menu {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-  }
-  
-  .navbar .menu li a {
-    text-decoration: none;
-    color: #bbb;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-  
-  .navbar .menu li a:hover {
-    color: #a855f7;
-  }
+:root{
+  --bg:#070717; --accent:#b46bff; --muted:#cfd6e3;
+  --btn-bg:#111426; --btn-border: rgba(255,255,255,0.06);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  background:linear-gradient(180deg,var(--bg),#050513);
+  color:var(--muted);
+}
+
+/* NAVBAR */
+.navbar{
+  width:100%;
+  background:#0b0b0c;
+  padding:14px 40px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.nav-left{display:flex;align-items:center;gap:10px}
+.logo-icon{width:22px;height:22px}
+.logo-text{color:var(--accent);font-weight:700;font-size:18px}
+.nav-center{display:flex;gap:28px}
+.nav-center a{
+  color:#dbe6f8;text-decoration:none;font-size:15px;opacity:0.95;
+}
+.nav-center a:hover{color:#89c6ff}
+.nav-right .user-icon{
+  background:#fff;width:36px;height:36px;border-radius:50%;display:flex;
+  align-items:center;justify-content:center;font-size:18px;color:#111;
+}
+
+/* CONTAINER */
+.container{
+  max-width:1150px;margin:40px auto;padding:30px;border-radius:10px;
+  background:transparent;
+}
+h2.titulo{text-align:center;font-size:26px;margin-bottom:26px;color:#fff}
+
+/* GRID DE IDIOMAS */
+.language-table{
+  display:grid;
+  grid-template-columns: repeat(auto-fill,minmax(140px,1fr));
+  gap:14px;
+  width:86%;
+  margin:0 auto;
+}
+.language-table button{
+  background:var(--btn-bg);
+  border:1px solid var(--btn-border);
+  padding:12px 18px;
+  border-radius:10px;
+  color:var(--muted);
+  font-size:15px;
+  cursor:pointer;
+  transition: transform .12s ease, background .12s ease;
+  text-align:center;
+}
+.language-table button:hover{transform:translateY(-3px); background:#15162a}
+.language-table button.selected{
+  outline:3px solid rgba(180,107,255,0.12);
+  border-color: rgba(180,107,255,0.2);
+  color:#fff;
+  background:linear-gradient(180deg,#1b1330,#0f0c1e);
+}
+
+/* responsive */
+@media (max-width:720px){
+  .nav-center{display:none}
+  .language-table{grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); width:94%}
+  .navbar{padding:12px}
+}

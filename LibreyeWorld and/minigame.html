@@ -1,25 +1,297 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Mini Game LIBRAS</title>
-
-    <!-- Link do CSS -->
+    <title>Minigame 2D – Estilo Undertale</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="minigame.css">
 </head>
 <body>
 
-    <h1>Aprenda LIBRAS – Mini Game</h1>
+<header class="mg-header">
+    <h1>Minigame – Núcleo de Tradução</h1>
+    <p>Desvie dos ataques dentro da arena para desbloquear uma nova palavra.</p>
+    <a href="cursos.html" class="mg-back">← Voltar para os cursos</a>
+</header>
 
-    <div id="card">
-        <h2 id="question">Carregando...</h2>
-        <img id="img" src="" width="180" style="display:none; margin-top:10px;">
-        <div id="options"></div>
-    </div>
+<main class="mg-main">
 
-    <!-- Link do JS -->
-    <script src="minigame.js"></script>
+    <!-- Lado história -->
+    <section class="mg-story">
+        <h2>Missão</h2>
+        <p>
+            Você está dentro de um <strong>núcleo de tradução</strong> do LibreyeWord,
+            em modo de defesa holográfica.
+        </p>
+        <p>
+            Use as teclas <strong>W / A / S / D</strong> ou as setas do teclado para
+            mover a <span class="soul-label">ALMA</span> vermelha dentro da arena.
+        </p>
+        <p>
+            Se você conseguir <strong>sobreviver alguns segundos</strong> sem ser atingido,
+            desbloqueia uma palavra nova do curso.
+        </p>
+
+        <div class="mg-tip-box">
+            <h3>Controles</h3>
+            <p>Teclado: ↑ ↓ ← → ou W A S D</p>
+            <p>F5: reinicia o minigame se quiser tentar de novo.</p>
+        </div>
+    </section>
+
+    <!-- Lado jogo (estilo Undertale) -->
+    <section class="mg-game">
+
+        <header class="mg-game-header">
+            <span class="status-text">Núcleo em teste</span>
+            <span class="status-hints">Desvie dos projéteis dentro da caixa.</span>
+        </header>
+
+        <div class="battle-wrapper">
+            <div class="battle-box">
+                <canvas id="battleCanvas" width="320" height="220"></canvas>
+            </div>
+            <p class="battle-info">
+                Fique vivo dentro da arena para concluir o teste.
+            </p>
+        </div>
+
+        <!-- Palavra secreta -->
+        <section class="mg-secret">
+            <h3>Palavra secreta do curso</h3>
+            <p>Complete o desafio para desbloquear:</p>
+            <div class="mg-code-slots" id="mg-code-slots">
+                <span class="slot">?</span>
+                <span class="slot">?</span>
+                <span class="slot">?</span>
+                <span class="slot">?</span>
+                <span class="slot">?</span>
+                <span class="slot">?</span>
+            </div>
+            <p id="mg-message" class="mg-message"></p>
+        </section>
+    </section>
+</main>
+
+<script>
+    // ========= CONFIGURAÇÃO DO JOGO =========
+
+    const canvas = document.getElementById("battleCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // área onde a alma pode se mover (dentro da caixa)
+    const arena = {
+        x: 40,
+        y: 25,
+        width: 240,
+        height: 150
+    };
+
+    const soul = {
+        x: arena.x + arena.width / 2,
+        y: arena.y + arena.height / 2,
+        size: 10,
+        speed: 0.22 // em pixels/ms
+    };
+
+    let bullets = [];
+    let keys = {};
+    let lastSpawn = 0;
+    const spawnInterval = 650; // ms
+    let isGameOver = false;
+    let isWin = false;
+
+    const surviveTime = 15000; // 15s
+    const startTime = performance.now();
+
+    const secretWord = "ACCESS";
+    const slotsEl = document.getElementById("mg-code-slots");
+    const msgEl = document.getElementById("mg-message");
+    let revealed = ["?", "?", "?", "?", "?", "?"];
+
+    function renderCodeSlots() {
+        const spans = slotsEl.querySelectorAll(".slot");
+        spans.forEach((span, i) => {
+            span.textContent = revealed[i];
+        });
+    }
+
+    function revealWord() {
+        for (let i = 0; i < secretWord.length; i++) {
+            revealed[i] = secretWord[i];
+        }
+        renderCodeSlots();
+        msgEl.innerHTML = `
+            <strong>ACCESS</strong> desbloqueada!<br>
+            Em inglês, <strong>access</strong> significa <strong>acesso</strong>.
+            No contexto do LibreyeWord, fala sobre garantir que todas as pessoas
+            consigam usar e entender a plataforma. 💜
+        `;
+    }
+
+    function showGameOver() {
+        msgEl.textContent = "Você foi atingido! Aperte F5 para tentar de novo.";
+    }
+
+    // ========= CONTROLES =========
+    document.addEventListener("keydown", (e) => {
+        keys[e.key.toLowerCase()] = true;
+    });
+
+    document.addEventListener("keyup", (e) => {
+        keys[e.key.toLowerCase()] = false;
+    });
+
+    // ========= LÓGICA DO JOGO =========
+
+    function spawnBullet() {
+        const side = Math.floor(Math.random() * 4); // 0 top, 1 right, 2 bottom, 3 left
+        const speed = 0.18 + Math.random() * 0.09; // px/ms
+
+        let x, y, vx, vy;
+        const size = 8;
+
+        if (side === 0) {
+            // cima -> para baixo
+            x = arena.x + Math.random() * arena.width;
+            y = arena.y - size;
+            vx = 0;
+            vy = speed;
+        } else if (side === 1) {
+            // direita -> esquerda
+            x = arena.x + arena.width + size;
+            y = arena.y + Math.random() * arena.height;
+            vx = -speed;
+            vy = 0;
+        } else if (side === 2) {
+            // baixo -> cima
+            x = arena.x + Math.random() * arena.width;
+            y = arena.y + arena.height + size;
+            vx = 0;
+            vy = -speed;
+        } else {
+            // esquerda -> direita
+            x = arena.x - size;
+            y = arena.y + Math.random() * arena.height;
+            vx = speed;
+            vy = 0;
+        }
+
+        bullets.push({ x, y, vx, vy, size });
+    }
+
+    function update(dt, now) {
+        if (isGameOver || isWin) return;
+
+        // movimento da alma
+        let velX = 0;
+        let velY = 0;
+
+        if (keys["arrowup"] || keys["w"]) velY -= soul.speed * dt;
+        if (keys["arrowdown"] || keys["s"]) velY += soul.speed * dt;
+        if (keys["arrowleft"] || keys["a"]) velX -= soul.speed * dt;
+        if (keys["arrowright"] || keys["d"]) velX += soul.speed * dt;
+
+        soul.x += velX;
+        soul.y += velY;
+
+        const half = soul.size / 2;
+        const minX = arena.x + half;
+        const maxX = arena.x + arena.width - half;
+        const minY = arena.y + half;
+        const maxY = arena.y + arena.height - half;
+
+        if (soul.x < minX) soul.x = minX;
+        if (soul.x > maxX) soul.x = maxX;
+        if (soul.y < minY) soul.y = minY;
+        if (soul.y > maxY) soul.y = maxY;
+
+        // spawn de projéteis
+        if (now - lastSpawn > spawnInterval) {
+            spawnBullet();
+            lastSpawn = now;
+        }
+
+        // mover projéteis
+        bullets.forEach(b => {
+            b.x += b.vx * dt;
+            b.y += b.vy * dt;
+        });
+
+        // remover projéteis fora da tela
+        bullets = bullets.filter(b =>
+            b.x + b.size > 0 &&
+            b.x < canvas.width &&
+            b.y + b.size > 0 &&
+            b.y < canvas.height
+        );
+
+        // colisão
+        const sx1 = soul.x - half;
+        const sy1 = soul.y - half;
+        const sx2 = soul.x + half;
+        const sy2 = soul.y + half;
+
+        for (const b of bullets) {
+            const bx1 = b.x;
+            const by1 = b.y;
+            const bx2 = b.x + b.size;
+            const by2 = b.y + b.size;
+
+            if (sx1 < bx2 && sx2 > bx1 && sy1 < by2 && sy2 > by1) {
+                isGameOver = true;
+                showGameOver();
+                break;
+            }
+        }
+
+        // vitória por tempo
+        if (!isGameOver && !isWin && now - startTime >= surviveTime) {
+            isWin = true;
+            revealWord();
+        }
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // fundo
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // borda da caixa estilo Undertale
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 3;
+        ctx.strokeRect(arena.x, arena.y, arena.width, arena.height);
+
+        // projéteis
+        ctx.fillStyle = "#ffffff";
+        bullets.forEach(b => {
+            ctx.fillRect(b.x, b.y, b.size, b.size);
+        });
+
+        // alma vermelha
+        const half = soul.size / 2;
+        ctx.fillStyle = "#ff3b3b";
+        ctx.fillRect(soul.x - half, soul.y - half, soul.size, soul.size);
+    }
+
+    let lastTime = performance.now();
+
+    function loop(now) {
+        const dt = now - lastTime;
+        lastTime = now;
+
+        update(dt, now);
+        draw();
+
+        requestAnimationFrame(loop);
+    }
+
+    // inicia o jogo
+    renderCodeSlots();
+    requestAnimationFrame(loop);
+</script>
 
 </body>
 </html>

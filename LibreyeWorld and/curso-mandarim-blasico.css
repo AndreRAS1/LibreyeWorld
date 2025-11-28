@@ -1,0 +1,134 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Fundo da página */
+body {
+    background: #050509;
+    color: #e9ddff;
+}
+
+/* Container central */
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: radial-gradient(circle at top, rgba(150, 80, 255, 0.25), #050509);
+}
+
+/* Card principal */
+.card-curso {
+    width: 100%;
+    max-width: 1100px;
+    background: rgba(10, 10, 20, 0.95);
+    border-radius: 22px;
+    padding: 40px;
+    border: 1px solid rgba(170, 120, 255, 0.6);
+    box-shadow:
+        0 0 40px rgba(130, 70, 255, 0.5),
+        0 0 80px rgba(40, 0, 80, 0.5);
+
+    display: grid;
+    grid-template-columns: 2fr 1.2fr;
+    gap: 40px;
+}
+
+@media (max-width: 900px) {
+    .card-curso {
+        grid-template-columns: 1fr;
+        padding: 25px;
+    }
+}
+
+/* Texto */
+.curso-texto h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+.curso-texto h1 span {
+    color: #b78fff;
+}
+.mandarin {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.curso-texto p {
+    margin-top: 8px;
+    line-height: 1.6;
+    color: #d2c4ff;
+}
+
+/* Tag */
+.tag-nivel {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 6px 14px;
+    background: rgba(143, 61, 255, 0.2);
+    border: 1px solid #8f3dff;
+    border-radius: 20px;
+    color: #e9ddff;
+    font-size: 14px;
+}
+
+/* Lista */
+.lista-modulos {
+    list-style: none;
+    margin-top: 20px;
+}
+.lista-modulos li {
+    padding: 8px 0;
+    font-size: 16px;
+    color: #d6c7ff;
+}
+.lista-modulos li::before {
+    content: "• ";
+    color: #c38bff;
+    font-size: 22px;
+    vertical-align: middle;
+}
+
+/* HOLOGRAMA */
+.holograma {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Boneco holográfico */
+.boneco {
+    width: 180px;
+    height: 320px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #9f63ff, #d7b7ff);
+    filter: blur(2px);
+    opacity: 0.85;
+    box-shadow:
+        0 0 30px rgba(160, 110, 255, 0.8),
+        0 0 70px rgba(180, 100, 255, 0.7),
+        inset 0 0 20px rgba(255, 255, 255, 0.3);
+
+    clip-path: polygon(
+        40% 0%, 60% 0%, 
+        70% 20%, 70% 40%, 
+        60% 60%, 60% 80%, 
+        40% 80%, 40% 60%,
+        30% 40%, 30% 20%
+    );
+
+    animation: flutuar 4s infinite ease-in-out alternate;
+}
+
+/* Animação */
+@keyframes flutuar {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-18px); }
+}

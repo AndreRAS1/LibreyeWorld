@@ -1,0 +1,324 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: #05040a;
+    color: #f4ecff;
+}
+
+/* HERO ITÁLIA */
+.italy-hero {
+    padding: 40px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    background: radial-gradient(circle at top, rgba(150, 80, 255, 0.35), #05040a);
+    border-bottom: 1px solid rgba(180, 140, 255, 0.4);
+}
+
+/* LADO ESQUERDO */
+.hero-left {
+    max-width: 520px;
+}
+
+.badge-italy {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #009246, #ffffff, #ce2b37);
+    color: #1a1025;
+    font-weight: 600;
+}
+
+.hero-left h1 {
+    margin-top: 16px;
+    font-size: 34px;
+    line-height: 1.3;
+    text-shadow: 0 0 18px rgba(170, 120, 255, 0.9);
+}
+
+.hero-sub {
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #dcd0ff;
+}
+
+/* BOTÕES DO HERO */
+.hero-buttons {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.btn-hero-primary,
+.btn-hero-secondary {
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 999px;
+    padding: 10px 22px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Botão principal: roxo */
+.btn-hero-primary {
+    background: linear-gradient(135deg, #8e3dff, #b388ff);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 0 20px rgba(160, 110, 255, 0.9);
+}
+.btn-hero-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 28px rgba(190, 140, 255, 1);
+}
+
+/* Botão secundário: borda roxa */
+.btn-hero-secondary {
+    border: 1px solid #9d6eff;
+    background: transparent;
+    color: #e8deff;
+}
+.btn-hero-secondary:hover {
+    background: rgba(70, 40, 120, 0.7);
+}
+
+/* LADO DIREITO - HOLOGRAMA ITÁLIA */
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.italy-holo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.italy-ring {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    border: 2px solid rgba(200, 170, 255, 0.7);
+    box-shadow:
+        0 0 30px rgba(170, 120, 255, 0.9),
+        0 0 55px rgba(90, 40, 150, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    animation: giro-italia 9s linear infinite;
+}
+
+/* Faixa interna com cores da Itália em holograma */
+.italy-flag-glow {
+    position: absolute;
+    width: 140%;
+    height: 40%;
+    background: linear-gradient(90deg,
+        rgba(0, 146, 70, 0.55),
+        rgba(255, 255, 255, 0.7),
+        rgba(206, 43, 55, 0.7)
+    );
+    filter: blur(6px);
+    transform: rotate(-18deg);
+}
+
+/* Silhueta holográfica (mais “estátua”) */
+.italy-silhouette {
+    position: relative;
+    width: 90px;
+    height: 170px;
+    border-radius: 45px;
+    background: linear-gradient(180deg, rgba(250, 245, 255, 0.95), rgba(180, 120, 255, 0.3));
+    box-shadow:
+        0 0 25px rgba(250, 245, 255, 0.9),
+        0 0 55px rgba(190, 140, 255, 0.9);
+    filter: blur(0.5px);
+    animation: sobe-desce 3.2s ease-in-out infinite alternate;
+}
+
+/* Cabeça estilo busto */
+.italy-silhouette::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffffff, #e2d3ff);
+    box-shadow:
+        0 0 20px rgba(255, 255, 255, 1),
+        0 0 45px rgba(210, 190, 255, 0.9);
+}
+
+/* Texto embaixo do holograma */
+.holo-text {
+    font-size: 13px;
+    color: #d5c8ff;
+    opacity: 0.9;
+}
+
+/* ANIMAÇÕES */
+@keyframes giro-italia {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+@keyframes sobe-desce {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-16px); }
+}
+
+/* SEÇÃO PRINCIPAL */
+.italy-main {
+    padding: 40px 8%;
+    display: grid;
+    grid-template-columns: 2fr 1.1fr;
+    gap: 36px;
+}
+
+/* Coluna esquerda */
+.col-left h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.col-left p {
+    max-width: 620px;
+    line-height: 1.6;
+    color: #ddcffd;
+}
+
+/* Lista de módulos */
+.lista-modulos {
+    list-style: none;
+    margin-top: 16px;
+}
+.lista-modulos li {
+    padding: 6px 0;
+    color: #efe4ff;
+}
+.lista-modulos li::before {
+    content: "▹ ";
+    color: #c88fff;
+}
+
+/* Botões inferiores */
+.botoes-inferiores {
+    margin-top: 22px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn-outline-italy {
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 1px solid #9a6bff;
+    background: transparent;
+    color: #f0e6ff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s;
+}
+.btn-outline-italy:hover {
+    background: rgba(80, 50, 140, 0.9);
+}
+
+.btn-link-voltar {
+    text-decoration: none;
+    font-size: 14px;
+    color: #b894ff;
+}
+.btn-link-voltar:hover {
+    text-decoration: underline;
+}
+
+/* Coluna direita: info */
+.col-right {
+    background: #100f18;
+    border-radius: 16px;
+    padding: 20px 18px;
+    border: 1px solid #7a4fe0;
+    box-shadow: 0 0 22px rgba(120, 70, 220, 0.7);
+    height: fit-content;
+}
+
+.col-right h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.info-list {
+    list-style: none;
+    font-size: 14px;
+    color: #e0d5ff;
+}
+.info-list li {
+    margin-bottom: 8px;
+}
+.info-list strong {
+    color: #f6eeff;
+}
+
+/* Tags Itália */
+.italy-tags {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.italy-tags span {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(30, 20, 60, 0.9);
+    border: 1px solid rgba(200, 170, 255, 0.7);
+}
+
+/* Botão da coluna direita */
+.btn-col-right {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #8e3dff, #b388ff);
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    transition: 0.2s;
+}
+.btn-col-right:hover {
+    box-shadow: 0 0 24px rgba(180, 130, 255, 1);
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+    .italy-hero {
+        flex-direction: column;
+        padding: 30px 6%;
+        text-align: left;
+    }
+
+    .italy-main {
+        grid-template-columns: 1fr;
+        padding: 30px 6%;
+    }
+}
